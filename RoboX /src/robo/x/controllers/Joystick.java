@@ -71,7 +71,7 @@ public class Joystick {
         if (connectionType == 0) {
 
             try {
-                ether.startUDPClient(data);
+                 ether.startUDPClient(data);
             } catch (IOException ex) {
                 Logger.getLogger(Joystick.class.getName()).log(Level.SEVERE, null, ex);
             }

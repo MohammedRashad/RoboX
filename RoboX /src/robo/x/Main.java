@@ -7,6 +7,10 @@ package robo.x;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import robo.x.communication.Ethernet;
 import robo.x.views.Home;
 
 /**

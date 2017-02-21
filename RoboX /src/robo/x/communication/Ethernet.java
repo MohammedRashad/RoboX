@@ -27,9 +27,9 @@ import java.net.InetAddress;
  */
 public class Ethernet {
 
-    String IPAdress;
+    static String IPAdress;
 
-    private DatagramSocket m_clientSocket;
+    private static DatagramSocket m_clientSocket;
 
     public Ethernet(String data) {
 
@@ -38,11 +38,11 @@ public class Ethernet {
 
     public void startUDPClient(String data) throws IOException {
 
-        m_clientSocket = new DatagramSocket(8888);
+        m_clientSocket = new DatagramSocket();
 
         byte[] packet = data.getBytes();
 
-        DatagramPacket client_packet = new DatagramPacket(packet, packet.length, InetAddress.getByName(data), 8888);
+        DatagramPacket client_packet = new DatagramPacket(packet, packet.length, InetAddress.getByName(this.IPAdress), 8888);
 
         m_clientSocket.send(client_packet);
         System.out.println("Sent!");
@@ -53,4 +53,5 @@ public class Ethernet {
         
     }
 
+    
 }

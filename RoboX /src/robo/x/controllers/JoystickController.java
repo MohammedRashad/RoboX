@@ -29,6 +29,7 @@ public class JoystickController extends Thread {
 
             }
 
+            
             int xValuePercentageLeftJoystick = Joystick.joystick.getX_LeftJoystick_Percentage();
             int yValuePercentageLeftJoystick = Joystick.joystick.getY_LeftJoystick_Percentage();
 
@@ -43,9 +44,13 @@ public class JoystickController extends Thread {
 
             ////////////////////////////////////////////////////////
             if (xValuePercentageLeftJoystick > 0) {
+                
                 Joystick.sendData("l");
+                
             } else if (xValuePercentageLeftJoystick < 0) {
+                
                 Joystick.sendData("r");
+                
             } else {
 
                 Joystick.sendData("s");
@@ -66,6 +71,7 @@ public class JoystickController extends Thread {
             }
 
             ////////////////////////////////////////////////////////
+            
             if (joystickButton_1) {
                 Joystick.sendData("u");
 
@@ -100,7 +106,8 @@ public class JoystickController extends Thread {
 
             //////////////////////////////////////////////////////////////////
             if (joystickButton_5) {
-                Joystick.sendData("u");
+                
+                Joystick.sendData("m");
 
             } else {
 
@@ -108,7 +115,8 @@ public class JoystickController extends Thread {
             }
 
             if (joystickButton_6) {
-                Joystick.sendData("u");
+                
+                Joystick.sendData("v");
 
             } else {
 
