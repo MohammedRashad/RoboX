@@ -89,45 +89,7 @@ public class JoystickController extends Thread {
                                 break;
                         }
                     }
-
-                    if (value < 0.8 && !(tempPosition.equals(component.getIdentifier().getName()))) {
-                        // negative direction
-                        switch (component.getIdentifier().getName()) {
-                            case "x":
-                                // left stick - LEFT
-                                tempPosition = "x";
-                                System.out.println(tempPosition);
-                                Joystick.sendData("l");
-
-                                break;
-                            case "y":
-                                // left stick - UP
-                                tempPosition = "y";
-                                System.out.println(tempPosition);
-                                Joystick.sendData("f");
-
-                                break;
-                            case "rx":
-                                // right stick - LEFT
-                                tempPosition = "rx";
-                                System.out.println(tempPosition);
-
-                                break;
-                            case "ry":
-                                // right stick - UP
-                                tempPosition = "ry";
-                                System.out.println(tempPosition);
-
-                                break;
-                            case "z":
-                                // right trigger (z-axis)
-                                tempPosition = "z";
-                                System.out.println(tempPosition);
-
-                                break;
-                        }
-                    }
-                    
+ 
                     
                      if (value < -0.8 && !(tempPosition.equals(component.getIdentifier().getName()))) {
                         // negative direction
