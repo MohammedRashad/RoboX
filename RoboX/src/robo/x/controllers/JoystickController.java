@@ -47,90 +47,84 @@ public class JoystickController extends Thread {
             while (eq.getNextEvent(event)) {
 
                 component = event.getComponent();
+                List identifierName = component.getIdentifier().getName();
                 value = event.getValue();
 
                 // clear temporarily stored position if analog stick is in neutral position
-                if ((value < 0.3) && (value > -0.3) && (tempPosition.equals(component.getIdentifier().getName()))) {
+                if ((value < 0.3) && (value > -0.3) && (tempPosition.equals(identifierName))) {
                     tempPosition = "s";
                     Joystick.sendData("s");
                 }
 
                 if (component.isAnalog()) {
                     // input from analog-sticks and back triggers
-                    if ((value > 0.8) && !(tempPosition.equals(component.getIdentifier().getName()))) {
+                    if ((value > 0.8) && !(tempPosition.equals(identifierName))) {
                         // positive direction
-                        switch (component.getIdentifier().getName()) {
+                        switch (identifierName) {
                             case "x":
                                 // left stick - RIGHT
-                                tempPosition = "x";
                                 Joystick.sendData("r");
 
+                                
                                 break;
                             case "y":
                                 // left stick - DOWN
-                                tempPosition = "y";
                                 Joystick.sendData("b");
 
+                                
                                 break;
                             case "rx":
                                 // right stick - RIGHT
-                                tempPosition = "rx";
-
+                                
                                 break;
-                            case "ry":
+                            case
+                             "ry":
                                 // right stick - DOWN
-                                tempPosition = "ry";
-
+                                
                                 break;
-                            case "z":
+                            case
+                             "z":
                                 // left trigger (z-axis)
-                                tempPosition = "z";
-
+                                
                                 break;
                         }
+                        tempPosition = identifierName;  //is there any chances to get some values except of these five, than it will not work.
                     }
  
                     
-                     if (value < -0.8 && !(tempPosition.equals(component.getIdentifier().getName()))) {
+                     if (value < -0.8 && !(tempPosition.equals(identifierName))) {
                         // negative direction
-                        switch (component.getIdentifier().getName()) {
+                        switch (identifierName) {
                             case "x":
                                 // left stick - LEFT
-                                tempPosition = "x";
-                                System.out.println(tempPosition);
                                 Joystick.sendData("l");
 
                                 break;
                             case "y":
                                 // left stick - UP
-                                tempPosition = "y";
-                                System.out.println(tempPosition);
                                 Joystick.sendData("f");
 
                                 break;
                             case "rx":
                                 // right stick - LEFT
-                                tempPosition = "rx";
-                                System.out.println(tempPosition);
-
+                                
                                 break;
                             case "ry":
                                 // right stick - UP
-                                tempPosition = "ry";
-                                System.out.println(tempPosition);
-
+                                
                                 break;
                             case "z":
                                 // right trigger (z-axis)
-                                tempPosition = "z";
-                                System.out.println(tempPosition);
-
+                                
                                 break;
                         }
+                        tempPosition = identifierName;  //is there any chances to get some values except of these five, than it will not work.
+                        System.out.println(tempPosition);
+
                     }
                 } else // input from buttons, dpad analog-stick-pushes
                 {
-                    switch (component.getIdentifier().getName()) {
+                    switch (identifierName) {
 
                         case "0":
                             // A-Button
@@ -230,7 +224,7 @@ public class JoystickController extends Thread {
 
                         default:
 
-                            System.err.println(component.getIdentifier().getName());
+                            System.err.println(identifierName);
                             break;
                     }
                 }
